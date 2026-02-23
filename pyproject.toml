@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "text2odp"
+version = "0.1.0"
+description = "Scientific Text2ODP pipeline for generating Ontology Design Patterns from paper abstracts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Text2ODP Contributors"}]
+dependencies = [
+  "requests>=2.31.0",
+  "pydantic>=2.6.0",
+  "pandas>=2.1.0",
+  "numpy>=1.26.0",
+  "scikit-learn>=1.4.0",
+  "rdflib>=7.0.0",
+  "tqdm>=4.66.0",
+  "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+llm = [
+  "transformers>=4.40.0",
+  "torch>=2.2.0",
+  "sentence-transformers>=2.6.0"
+]
+
+[project.scripts]
+text2odp = "text2odp.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
